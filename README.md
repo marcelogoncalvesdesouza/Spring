@@ -46,7 +46,89 @@
 </dependency>
 ```
 
-## Inserindo dados no H2
+## Entidades e relacionamentos
+
+
+### Um para muitos e muitos para um
+
+```
+@Entity
+@Table(name = "tb_especialidade")
+public class Especialidade {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+
+    public Especialidade() {
+    }
+}
+```
+
+```
+@Entity
+@Table(name = "tb_medico")
+public class Medico {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String email;
+    private String crm;
+    private boolean atendeConvenio;
+
+    @ManyToOne
+    @JoinColumn(name = "id_especialidade")
+    private Especialidade especialidade;
+
+    public Medico() {
+    }
+}
+```
+
+### Muitos para muitos
+
+```
+@Entity
+@Table(name = "tb_autoridade")
+public class Autoridade {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+
+    public Autoridade() {
+    }
+}
+```
+
+```
+@Entity
+@Table(name = "tb_usuario")
+public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String sobrenome;
+    private String email;
+    private String senha;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_usuario_autoridade",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_autoridade"))
+    private Set<Autoridade> autoridades = new HashSet<>();
+
+    public Usuario() {
+    }
+```
+
+## Inserindo dados no H2 (data.sql)
 ```
 INSERT INTO tb_especialidade (nome) VALUES ('Clínica Geral');
 INSERT INTO tb_especialidade (nome) VALUES ('Cardiologia');

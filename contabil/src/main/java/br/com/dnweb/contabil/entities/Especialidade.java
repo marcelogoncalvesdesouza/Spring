@@ -16,6 +16,10 @@ public class Especialidade {
     public Especialidade() {
     }
 
+    public Especialidade(Long id) {
+        this.id = id;
+    }
+
     public Especialidade(Long id, String nome) {
         this.id = id;
         this.nome = nome;
