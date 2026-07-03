@@ -1,6 +1,5 @@
-package br.com.dnweb.contabil.entities;
+package br.com.dnweb.contabil.entidades;
 
-import br.com.dnweb.contabil.entities.Autoridade;
 import jakarta.persistence.*;
 
 import java.util.HashSet;

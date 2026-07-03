@@ -1,4 +1,4 @@
-package br.com.dnweb.contabil.entities;
+package br.com.dnweb.contabil.entidades;
 
 import jakarta.persistence.*;
 
