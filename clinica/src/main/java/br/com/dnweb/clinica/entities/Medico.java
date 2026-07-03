@@ -1,5 +1,6 @@
-package br.com.dnweb.contabil.entities;
+package br.com.dnweb.clinica.entities;
 
+import br.com.dnweb.clinica.entities.Especialidade;
 import jakarta.persistence.*;
 
 import java.util.Objects;

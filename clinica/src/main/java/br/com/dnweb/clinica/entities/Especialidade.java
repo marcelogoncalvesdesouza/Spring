@@ -1,4 +1,4 @@
-package br.com.dnweb.contabil.entities;
+package br.com.dnweb.clinica.entities;
 
 import jakarta.persistence.*;
 
